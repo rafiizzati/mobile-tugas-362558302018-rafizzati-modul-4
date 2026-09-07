@@ -1,95 +1,26 @@
-# Starter Template & Laporan Praktikum Pemrograman Mobile
-### Program Studi Sarjana Terapan Teknologi Rekayasa Perangkat Lunak (TRPL)
-**Politeknik Negeri Banyuwangi — Semester Ganjil 2026**
+# Laporan Praktikum Modul 01: Mobile Ecosystem, Flutter Setup & Profile App
 
-Panduan interaktif lengkap: [Portal Codelabs TRPL Poliwangi](https://codelabs-poliwangi.github.io/MobileDev-Codelabs/)
-
----
-
-## 1. Identitas Mahasiswa
-
-> [!IMPORTANT]
-> **Wajib Mengganti Data di Bawah Ini!**  
-> Autograding CI/CD akan memeriksa apakah nilai *placeholder* di bawah ini telah diganti dengan Nama dan NIM Anda yang sebenarnya. Jika belum diganti, pengujian `verify_documentation_test.dart` akan gagal.
-
-| Informasi | Data Mahasiswa |
-|---|---|
-| **Nama Lengkap** | Muhammad Rafi Izzati *(Ganti dengan Nama Lengkap Anda)* |
-| **NIM** | 362558302018 *(Ganti dengan NIM Asli Anda)* |
-| **Kelas / Angkatan** | TRPL 2D / 2025 |
-| **Dosen Pengampu** | Sepyan Purnama Kristanto, M.Kom. |
+- **Nama**: [Muhammad Rafi Izzat]
+- **NIM**: [362558302018]
+- **Kelas / Prodi**: 2D / Sarjana Terapan TRPL
+- **Mata Kuliah**: Pemrograman Perangkat Bergerak (Semester 3)
 
 ---
 
-## 2. Peta Kemajuan Modul Praktikum
+## 1. Ringkasan Aktivitas
+[Tuliskan 1-2 paragraf tentang apa yang Anda pelajari dan kerjakan pada minggu ini]
 
-Aplikasi ini menggunakan **Sistem Kontrol Akses Modul Terpusat (Smart Gating)** di file `lib/main.dart` agar mahasiswa belajar selaras dengan ritme materi dosen di kelas:
+## 2. Bukti Tangkapan Layar (Running App)
+[Sertakan minimal 2 screenshot bukti aplikasi profil berjalan di emulator atau HP fisik Anda]
 
-| Modul | Topik & Arsitektur | Status Akses | Perintah Self-Test Lokal | Bobot CI |
-|:---:|---|:---:|---|:---:|
-| **#01** | Mobile Ecosystem, Toolchain & Profile App | `⚡ Aktif` | `flutter test test/modul_01_test.dart` | 20 Pts |
-| **#02** | Declarative UI, BoxConstraints & Responsive Dashboard | `🔒 Terkunci (W02)` | `flutter test test/modul_02_test.dart` | 20 Pts |
-| **#03** | Navigation (GoRouter), Riverpod & 4-State KRS App | `🔒 Terkunci (W03)` | `flutter test test/modul_03_test.dart` | 20 Pts |
-| **#04** | Networking, REST API Dio & Repository Pattern | `🔒 Terkunci (W04)` | `flutter test test/modul_04_test.dart` | 15 Pts |
-| **Dok** | Verifikasi Identitas Asli Mahasiswa di README | `Wajib` | `flutter test test/verify_documentation_test.dart` | 10 Pts |
-| **Lint** | Dart Code Formatting & Static Analysis | `Wajib` | `flutter analyze --no-fatal-infos` | 15 Pts |
-| **Total** | **Skor Maksimal Evaluasi Autograding** | — | `flutter test` | **100 Pts** |
+![Screenshot Running 1](/mobile-tugas-362558302018-rafiizzati/screenshot/Screenshot_1.jpg)
+![Screenshot Running 2](/mobile-tugas-362558302018-rafiizzati/screenshot/Screenshot_2.jpg)
 
-> [!NOTE]
-> **Membuka Modul Terkunci saat di Laboratorium:**  
-> Jika Anda sedang berada di sesi perkuliahan laboratorium dan dosen mengumumkan pembukaan modul, klik kartu modul yang terkunci di aplikasi lalu masukkan **Token Akses Kelas** yang dibagikan oleh dosen (misal: `TRPL-M02`, `TRPL-M03`, `TRPL-M04`, atau master passcode `POLIWANGI2026`).
+## 3. Kendala yang Dihadapi & Solusinya
+- **Kendala**: [Contoh: Terjadi error saat flutter run fub]
+- **Solusi**: [penambahan pada isi patch]
 
----
-
-## 3. Panduan Menjalankan & Menguji Kode
-
-### A. Persiapan Lingkungan (Setup)
-```bash
-# 1. Unduh seluruh dependensi paket Flutter
-flutter pub get
-
-# 2. Jalankan aplikasi pada emulator atau perangkat fisik Android/iOS/Web
-flutter run
-```
-
-### B. Pengujian Mandiri Sebelum Push (Self-Testing)
-Sebelum melakukan `git push` ke repositori tugas GitHub Anda, pastikan seluruh pengujian lulus di mesin lokal:
-
-```bash
-# 1. Periksa aturan kode linter Dart
-flutter analyze
-
-# 2. Jalankan unit & widget test modul yang sedang Anda kerjakan
-flutter test test/modul_01_test.dart
-flutter test test/modul_02_test.dart
-
-# 3. Jalankan seluruh test suite sekaligus
-flutter test
-```
-
----
-
-## 4. Konvensi Pesan Commit (Conventional Commits)
-
-Mahasiswa **wajib** menggunakan format pesan commit terstruktur:
-- `feat(w01): complete profile screen and identity info card`
-- `feat(w02): implement layoutbuilder responsive grid for tablet`
-- `fix(w02): resolve renderflex overflow in course card`
-- `feat(w03): setup gorouter declarative routes and krs notifier`
-- `feat(w04): integrate dio remote datasource and repository pattern`
-- `docs(readme): update student identity and ai reflection table`
-
----
-
-## 5. Catatan Penggunaan AI (Responsible AI Disclosure)
-
-Sesuai prinsip **Responsible AI** di lingkungan akademik Politeknik Negeri Banyuwangi, mahasiswa diperbolehkan menggunakan AI coding assistant (GitHub Copilot, Gemini Code Assist, ChatGPT) sebagai akselerator belajar, dengan kewajiban mencatat penggunaannya secara transparan pada tabel berikut:
-
-| Modul / File Kode | Alat AI yang Digunakan | Tujuan Penggunaan | Validasi Teknis yang Dilakukan Mahasiswa |
-|---|---|---|---|
-| *Contoh: lib/modul_02/widgets/course_card.dart* | *GitHub Copilot* | *Saran styling Elevation & BoxDecoration* | *Memeriksa contrast ratio WCAG AA dan padding antarmuka* |
-| *Contoh: lib/modul_04/models/announcement.dart* | *Gemini Code Assist* | *Pengecekan null-safety pada fromJson* | *Menambahkan fallback default string kosong untuk mencegah error runtime* |
-
----
-
-*Hak Cipta © 2026 Jurusan Bisnis dan Informatika (JBI), Politeknik Negeri Banyuwangi.*
+## 4. Jawaban Pertanyaan Refleksi
+1. **Pilihan Native vs Flutter**: [Flutter karena dapat digunakan untuk membuat aplikasi pada beberapa platform seperti Android, iOS, dan Web dengan satu kode program. Flutter juga menyediakan banyak widget sehingga proses pembuatan tampilan aplikasi menjadi lebih mudah dan cepat dibandingkan jika harus membuat aplikasi secara terpisah untuk setiap platform.]
+2. **Prinsip UI = f(state)**: [Tampilan aplikasi akan menyesuaikan dengan kondisi atau data yang sedang terjadi. Contohnya pada aplikasi yang saya buat, ketika mode gelap diaktifkan, tampilan akan berubah menjadi dark mode.]
+3. **Pentingnya Conventional Commits**: [Membuat penulisan pesan commit menjadi lebih teratur dan mudah dipahami. Dengan format seperti feat, fix, atau chore, kita dapat mengetahui tujuan dari setiap perubahan pada project.]
