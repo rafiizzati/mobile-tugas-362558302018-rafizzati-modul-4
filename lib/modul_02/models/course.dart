@@ -1,55 +1,55 @@
-// Model data untuk mata kuliah
 class Course {
   final String code;
   final String name;
-  final String lecturer;
   final int sks;
-  final double progress; // progres silabus (0.0 - 1.0)
+  final double progress;
   final String room;
+  final String waktu;
+  final String status;
+  final String note;
 
   const Course({
     required this.code,
     required this.name,
-    required this.lecturer,
     required this.sks,
     required this.progress,
     this.room = 'Lab Komputer 3',
+    this.waktu = '',
+    this.status = 'Akan datang',
+    this.note = '',
   });
 
-  // Data dummy untuk bahan praktikum & testing
   static List<Course> getSampleCourses() {
     return const [
       Course(
         code: 'TRPL501',
-        name: 'Pemrograman Perangkat Bergerak',
-        lecturer: 'Sepyan Purnama Kristanto',
+        name: 'Mobile Programming',
         sks: 4,
         progress: 0.25,
-        room: 'Lab Komputer 3',
+        room: 'Lab 1',
+        waktu: '08.00 – 10.00',
+        status: 'Berlangsung',
+        note: 'Sedang digunakan oleh praktikan',
       ),
       Course(
         code: 'TRPL502',
-        name: 'Arsitektur Perangkat Lunak',
-        lecturer: 'Tim Dosen TRPL',
+        name: 'Rekayasa Perangkat Lunak',
         sks: 3,
-        progress: 0.40,
-        room: 'Ruang Teori 201',
+        progress: 0.50,
+        room: 'Lab 2',
+        waktu: '10.00 – 12.00',
+        status: 'Akan datang',
+        note: 'Sesi akan dimulai sebentar lagi',
       ),
       Course(
         code: 'TRPL503',
-        name: 'Manajemen Proyek Agile & DevOps',
-        lecturer: 'Tim Dosen TRPL',
+        name: 'Basis Data',
         sks: 3,
-        progress: 0.60,
-        room: 'Ruang Teori 104',
-      ),
-      Course(
-        code: 'TRPL504',
-        name: 'Penjaminan Mutu Perangkat Lunak (QA)',
-        lecturer: 'Tim Dosen TRPL',
-        sks: 2,
-        progress: 0.15,
-        room: 'Lab Jaringan',
+        progress: 1.0,
+        room: 'Lab 3',
+        waktu: '13.00 – 15.00',
+        status: 'Selesai',
+        note: 'Sesi telah selesai',
       ),
     ];
   }

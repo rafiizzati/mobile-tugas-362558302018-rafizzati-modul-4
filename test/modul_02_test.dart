@@ -17,7 +17,7 @@ void main() {
       const course = Course(
         code: 'TEST101',
         name: 'Algoritma Pemrograman',
-        lecturer: 'Dosen Penguji',
+        //lecturer: 'Dosen Penguji',
         sks: 3,
         progress: 0.5,
       );

@@ -4,119 +4,155 @@ import '../models/course.dart';
 class CourseCard extends StatelessWidget {
   final Course course;
 
-  const CourseCard({super.key, required this.course});
+  const CourseCard({
+    super.key,
+    required this.course,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    Color statusColor;
+    Color statusBg;
+    Color noteBg;
 
-    return Card(
-      elevation: 2,
-      margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      // Pakai Stack agar badge SKS bisa menimpa pojok kanan atas kartu
-      child: Stack(
+    if (course.status == 'Berlangsung') {
+      statusColor = const Color(0xff1683d8);
+      statusBg = const Color(0xff1683d8);
+      noteBg = const Color(0xffdff1ff);
+    } else if (course.status == 'Akan datang') {
+      statusColor = const Color(0xffa96800);
+      statusBg = const Color(0xffffe6a8);
+      noteBg = const Color(0xfffff5dc);
+    } else {
+      statusColor = const Color(0xff68707d);
+      statusBg = const Color(0xffe5e7eb);
+      noteBg = const Color(0xffeef0f2);
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xfff1f4f8),
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: const [
+          BoxShadow(
+            blurRadius: 2,
+            offset: Offset(0, 1),
+            color: Color(0x22000000),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Konten utama kartu
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  course.code,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.8,
-                  ),
-                ),
-                const SizedBox(height: 6),
-
-                // Batasi judul maksimal 2 baris agar tinggi kartu tetap konsisten
-                Text(
+          Row(
+            children: [
+              Expanded(
+                child: Text(
                   course.name,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.titleMedium?.copyWith(
+                  style: const TextStyle(
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
-
-                // Info dosen pengampu
-                Row(
-                  children: [
-                    Icon(Icons.person_outline, size: 16, color: theme.colorScheme.onSurfaceVariant),
-                    const SizedBox(width: 6),
-                    Expanded(
-                      child: Text(
-                        course.lecturer,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
-                      ),
-                    ),
-                  ],
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 9,
+                  vertical: 5,
                 ),
-                const SizedBox(height: 4),
-
-                // Ruang kelas/lab
-                Row(
-                  children: [
-                    Icon(Icons.meeting_room_outlined, size: 16, color: theme.colorScheme.onSurfaceVariant),
-                    const SizedBox(width: 6),
-                    Text(
-                      course.room,
-                      style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
-                    ),
-                  ],
+                decoration: BoxDecoration(
+                  color: statusBg,
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                const Spacer(),
-
-                // Progress bar silabus
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Progres Sesi', style: theme.textTheme.labelSmall),
-                        Text(
-                          '${(course.progress * 100).toInt()}%',
-                          style: theme.textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    LinearProgressIndicator(
-                      value: course.progress,
-                      borderRadius: BorderRadius.circular(4),
-                      minHeight: 6,
-                    ),
-                  ],
+                child: Text(
+                  course.status,
+                  style: TextStyle(
+                    color: course.status == 'Berlangsung'
+                        ? Colors.white
+                        : statusColor,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
 
-          // Badge SKS di pojok kanan atas
-          Positioned(
-            top: 12,
-            right: 12,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.primaryContainer,
-                borderRadius: BorderRadius.circular(12),
+          const SizedBox(height: 10),
+
+          Row(
+            children: [
+              const Icon(
+                Icons.access_time,
+                size: 16,
+                color: Color(0xff667085),
               ),
-              child: Text(
-                '${course.sks} SKS',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.bold,
+              const SizedBox(width: 6),
+              Text(
+                course.waktu,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xff30343b),
                 ),
               ),
+            ],
+          ),
+
+          const SizedBox(height: 5),
+
+          Row(
+            children: [
+              const Icon(
+                Icons.location_on,
+                size: 16,
+                color: Color(0xff667085),
+              ),
+              const SizedBox(width: 6),
+              Text(
+                course.room,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xff30343b),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 9,
+            ),
+            decoration: BoxDecoration(
+              color: noteBg,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  course.status == 'Berlangsung'
+                      ? Icons.groups
+                      : course.status == 'Akan datang'
+                          ? Icons.access_time
+                          : Icons.check_circle,
+                  size: 17,
+                  color: statusColor,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    course.note,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: statusColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

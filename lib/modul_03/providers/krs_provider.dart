@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/krs_course.dart';
 
-// StateNotifier untuk mengelola daftar KRS yang diambil mahasiswa
-class KrsNotifier extends StateNotifier<List<KrsCourse>> {
-  KrsNotifier() : super(KrsCourse.getInitialCourses());
+// Notifier Riverpod 3 untuk mengelola daftar KRS.
+class KrsNotifier extends Notifier<List<KrsCourse>> {
+  @override
+  List<KrsCourse> build() => KrsCourse.getInitialCourses();
 
   // Menambah mata kuliah ke dalam KRS dengan validasi duplikasi & kuota SKS
   bool tambahMataKuliah(KrsCourse course) {
@@ -29,9 +30,9 @@ class KrsNotifier extends StateNotifier<List<KrsCourse>> {
 }
 
 // Provider global untuk KRS
-final krsProvider = StateNotifierProvider<KrsNotifier, List<KrsCourse>>((ref) {
-  return KrsNotifier();
-});
+final krsProvider = NotifierProvider<KrsNotifier, List<KrsCourse>>(
+  KrsNotifier.new,
+);
 
 // Provider terkomputasi (computed provider) untuk total SKS
 final totalSksProvider = Provider<int>((ref) {
