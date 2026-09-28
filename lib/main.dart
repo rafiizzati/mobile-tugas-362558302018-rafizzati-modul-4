@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-import 'pages/HomePage.dart';
+
+import 'modul_04/screens/announcement_list_screen.dart';
+import 'modul_04/services/announcement_api.dart';
 
 void main() {
-  runApp(const KantinApp());
+  runApp(const Modul04App());
 }
 
-class KantinApp extends StatelessWidget {
-  const KantinApp({super.key});
+class Modul04App extends StatelessWidget {
+  const Modul04App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kantin Kampus',
+      title: 'Portal Pengumuman TRPL',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1E6FD9)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1E6FD9),
+        ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: AnnouncementListScreen(
+        api: AnnouncementApi(
+          modeSimulasi: true,
+        ),
+      ),
     );
   }
 }
