@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/announcement.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import '../repositories/announcement_repository.dart';
 import '../repositories/announcement_repository_impl.dart';
 
